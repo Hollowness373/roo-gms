@@ -18,3 +18,14 @@ interface AuthCredentials {
     password: string;
     classId: string;
 }
+
+interface GuideParams {
+    title: string;
+    author: string;
+    classCategory: string;
+    coverUrl: string;
+    coverColor: string;
+    description: string;
+    summary: string;
+    videoUrl: string;
+}

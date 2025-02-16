@@ -25,8 +25,8 @@ export const navigationLinks = [
     },
     {
       img: "/icons/admin/book.svg",
-      route: "/admin/books",
-      text: "All Books",
+      route: "/admin/guides",
+      text: "All Guides",
     },
     {
       img: "/icons/admin/bookmark.svg",

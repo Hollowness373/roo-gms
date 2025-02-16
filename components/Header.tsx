@@ -18,7 +18,7 @@ import {
 import { useRouter } from 'next/navigation';
 import { signOutFromServer } from "@/lib/actions/logout"
 
-const Header = ({ session, userProfile } : { session: Session, userProfile: String}) => {
+const Header = ({ session, userProfile, userRole } : { session: Session, userProfile: String, userRole: Boolean }) => {
   
   const router = useRouter();
   const pathname = usePathname();
@@ -76,6 +76,9 @@ const Header = ({ session, userProfile } : { session: Session, userProfile: Stri
               <DropdownMenuSeparator className='bg-dark-100 h-1'/>
               <DropdownMenuItem onClick={() => {router.push("/my-profile")}} className='focus:bg-accent focus:text-accent-foreground'>Profile</DropdownMenuItem>
               <DropdownMenuItem onClick={() => {router.push("/my-profile")}} className='focus:bg-accent focus:text-accent-foreground'>Account Settings</DropdownMenuItem>
+              {userRole && 
+              <DropdownMenuItem onClick={() => {router.push("/admin")}} className='focus:bg-accent focus:text-accent-foreground'>Admin Panel</DropdownMenuItem>
+              }
               <DropdownMenuItem onClick={handleLogOut} className='focus:bg-red-400 focus:text-light-300'>Logout</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

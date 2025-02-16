@@ -9,5 +9,6 @@ const imagekit = new ImageKit({
 });
 
 export async function GET() {
-    return NextResponse.json(imagekit.getAuthenticationParameters);
+    const authenticationParameters = imagekit.getAuthenticationParameters();
+    return NextResponse.json(authenticationParameters);
 }
