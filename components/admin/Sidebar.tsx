@@ -17,7 +17,7 @@ const Sidebar = ({ session, userImage }: { session: Session, userImage: String }
     <div className='admin-sidebar'>
         <div>
             <div className="logo">
-                <Image src="/icons/admin/logo.svg" alt='logo' height={50} width={50}/>
+                <Image src="/icons/admin/logo.svg" alt='logo' height={50} width={60}/>
                 <h1>Panda</h1>
             </div>
             <div className="mt-10 flex flex-col gap-5">
