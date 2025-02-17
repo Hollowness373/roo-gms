@@ -2,7 +2,14 @@ import GuideList from '@/components/GuideList'
 import { sampleGuides } from '@/constants'
 import React from 'react'
 
-const Page = () => {
+import { db } from "@/database/drizzle";
+import { guides } from "@/database/schema";
+import { desc } from "drizzle-orm";
+
+const Page = async() => {
+
+  const guidesList = (await db.select().from(guides).limit(24).orderBy(desc(guides.createdAt))) as Guide[];
+
   return (
     <>
       <form>
@@ -10,7 +17,7 @@ const Page = () => {
       </form>
       <GuideList 
         title='Guides:'
-        guides={sampleGuides}
+        guides={guidesList}
         containerClassName='mt-28'
       />
     </>

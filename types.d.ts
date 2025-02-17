@@ -1,15 +1,14 @@
 interface  Guide {
-    id: number;
+    id: string;
     title: string;
     author: string;
-    genre: string;
-    rating: number;
-    video: string;
-    color: string;
-    cover: string;
+    classCategory: string;
+    videoUrl: string | null;
+    coverColor: string;
+    coverUrl: string;
     description: string;
     summary: string;
-    isViewed?: boolean;
+    createdAt: Date | null
 }
 
 interface AuthCredentials {

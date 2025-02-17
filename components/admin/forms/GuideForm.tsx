@@ -121,6 +121,7 @@ const GuideForm = ({ type, ...guide } : Props) => {
                                         <SelectValue placeholder="Select Class"/>
                                     </SelectTrigger>
                                     <SelectContent className='bg-light-600'>
+                                        <SelectItem value="General">General</SelectItem>
                                         <SelectItem value="Acolyte">Acolyte</SelectItem>
                                         <SelectItem value="Swordsman">Swordsman</SelectItem>
                                         <SelectItem value="Archer">Archer</SelectItem>
@@ -201,17 +202,13 @@ const GuideForm = ({ type, ...guide } : Props) => {
                     render={({ field }) => (
                         <FormItem className='flex flex-col gap-1' >
                             <FormLabel className='text-base font-normal text-dark-500'>
-                                Guide Video
+                                Youtube Video URL (embed)
                             </FormLabel>
                             <FormControl>
-                                <FileUpload
-                                    type="video"
-                                    accept="video/*"
-                                    placeholder="Upload a video"
-                                    folder="guides/video"
-                                    variant="light"
-                                    onFileChange={field.onChange}
-                                    value={field.value}
+                                <Input 
+                                    placeholder='youtube.com/embed/'
+                                    {...field}
+                                    className='guide-form_input'
                                 />
                             </FormControl>
                         <FormMessage />

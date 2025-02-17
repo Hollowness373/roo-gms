@@ -1,22 +1,25 @@
+import { auth } from "@/auth";
 import GuideList from "@/components/GuideList";
 import GuideOverview from "@/components/GuideOverview";
-import { sampleGuides } from "@/constants";
 import { db } from "@/database/drizzle";
-import { users } from "@/database/schema";
+import { guides } from "@/database/schema";
+import { desc } from "drizzle-orm";
 
 
 const Home = async() => {
 
-  /*
-  const result = await db.select().from(users);
-  console.log(JSON.stringify(result, null, 2))
-  */
+  const session =  await auth();
+
+  const guidesList = (await db.select().from(guides).limit(13).orderBy(desc(guides.createdAt))) as Guide[];
+
+  // userId={session?.user?.id as string}
+
    return (
     <>
-      <GuideOverview {...sampleGuides[0]} />
+      <GuideOverview {...guidesList[0]}/>
       <GuideList
         title="Latest Guides"
-        guides={sampleGuides}
+        guides={guidesList.slice(1)}
         containerClassName="mt-28"
       />
     </>
