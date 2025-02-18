@@ -20,8 +20,8 @@ export const navigationLinks = [
     },
     {
       img: "/icons/admin/users.svg",
-      route: "/admin/users",
-      text: "All Users",
+      route: "/admin/panda-users",
+      text: "Panda Members",
     },
     {
       img: "/icons/admin/book.svg",
@@ -29,9 +29,9 @@ export const navigationLinks = [
       text: "All Guides",
     },
     {
-      img: "/icons/admin/bookmark.svg",
-      route: "/admin/book-requests",
-      text: "Borrow Requests",
+      img: "/icons/admin/users.svg",
+      route: "/admin/users",
+      text: "All Users",
     },
     {
       img: "/icons/admin/user.svg",

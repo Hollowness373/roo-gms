@@ -12,16 +12,17 @@ import { db } from '@/database/drizzle'
 import { users } from '@/database/schema'
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
 import BtnActions from '@/components/admin/cta/BtnActions'
+import { eq } from 'drizzle-orm'
 
 
 const Page = async() => {
 
     const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short', day: '2-digit' };
-    const usersData = await db.select().from(users);
+    const usersData = await db.select().from(users).where(eq(users.status, "APPROVED"));
 
      return (
         <section className='w-full rounded-2xl bg-white p-7'>
-            <h2 className="text-xl font-semibold">All Users</h2>
+            <h2 className="text-xl font-semibold">Panda Members</h2>
             <div className='mt-7 w-full overflow-hidden'>
                 <Table className='rounded-t-xl overflow-hidden'>
                     <TableCaption>List of all users</TableCaption>
@@ -29,7 +30,6 @@ const Page = async() => {
                         <TableRow>
                             <TableHead>IGN</TableHead>
                             <TableHead>Class</TableHead>
-                            <TableHead>Status</TableHead>
                             <TableHead>Role</TableHead>
                             <TableHead>Date Joined</TableHead>
                             <TableHead className="text-right">Action</TableHead>
@@ -51,14 +51,13 @@ const Page = async() => {
                                     {user.inGameName}
                                 </TableCell>
                                 <TableCell>{user.classId}</TableCell>
-                                <TableCell>{user.status === "APPROVED" ? "Panda" : "Visitor"}</TableCell>
                                 <TableCell className={`${user.role === "ADMIN" ? "text-primary-admin font-bold": "text-green-600"}`}>{user.role}</TableCell>
                                 <TableCell>{user.createdAt?.toLocaleDateString('en-us', options).replace(/([a-zA-Z]+)\./, '$1.')}</TableCell>
                                 <TableCell>
                                     <BtnActions
                                         id={user.id}
-                                        method="DELETE"
-                                        src='/icons/admin/trash.svg'
+                                        method="BAN"
+                                        src='/icons/admin/ban.svg'
                                         alt='ban-btn'
                                         width={20}
                                         height={20}

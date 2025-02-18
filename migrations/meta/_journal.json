@@ -29,6 +29,20 @@
       "when": 1739724673096,
       "tag": "0003_gifted_mephisto",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1739892987128,
+      "tag": "0004_purple_loa",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1739894678179,
+      "tag": "0005_lush_black_queen",
+      "breakpoints": true
     }
   ]
 }

@@ -13,18 +13,3 @@ export async function fetchUserImage({session}: {session: Session}) {
 
     return image
 }
-
-
-//to call in client side
-/*
-    const [ userImage, setUserImage ] = useState('https://github.com/shadcn.png');
-    
-    const fetchData = async() => {
-        const img = await fetchUserImage({session})
-        setUserImage(img || 'https://github.com/shadcn.png')
-    }
-    
-    useEffect(() => {
-        fetchData();
-    }, [])
-*/
