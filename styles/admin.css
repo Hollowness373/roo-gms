@@ -45,6 +45,10 @@
         @apply min-h-14 border border-gray-100 bg-light-600 p-4 text-base font-semibold placeholder:font-normal placeholder:text-slate-500 !important;
     }
 
+    .guide-edit-form_input {
+        @apply min-h-14 border border-gray-100 bg-light-600 p-4 text-base font-semibold placeholder:font-semibold placeholder:text-black !important;
+    }
+
     .guide-form_btn {
         @apply min-h-14 w-full bg-primary-admin hover:bg-primary-admin/95 !important;
     }
@@ -174,7 +178,7 @@
     }
 
     .admin-sidebar .logo h1 {
-        @apply text-2xl font-semibold text-primary-admin max-md:hidden;
+        @apply text-3xl font-semibold text-primary-admin max-md:hidden;
     }
 
     .admin-sidebar .link {

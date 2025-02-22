@@ -30,7 +30,7 @@ const Header = ({ session, userProfile, userRole } : { session: Session, userPro
   return <header className='my-10 flex justify-between gap-5'>
     <Link href="/" className='flex flex-row items-center gap-1'>
         <Image src="/icons/logo.svg" alt='logo' width={60} height={50}/>
-        <h1 className='font-semibold text-3xl text-light-100'>Panda</h1>
+        <h1 className='font-semibold text-3xl text-light-100 max-md:hidden'>Panda</h1>
     </Link>
     <ul className='flex flex-row items-center gap-8'>
         <li>

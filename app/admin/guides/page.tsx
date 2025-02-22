@@ -58,14 +58,24 @@ const Page = async() => {
                   <TableCell>{guide.author}</TableCell>
                   <TableCell>{guide.createdAt?.toLocaleDateString('en-us', options).replace(/([a-zA-Z]+)\./, '$1.')}</TableCell>
                   <TableCell>
-                    <BtnActions
-                      id={guide.id}
-                      method="EDIT"
-                      src='/icons/admin/ban.svg'
-                      alt='ban-btn'
-                      width={20}
-                      height={20}
-                    />
+                    <div className='flex flex-row justify-end gap-2'>
+                      <BtnActions
+                        id={guide.id}
+                        method="EDITBOOK"
+                        src='/icons/admin/edit.svg'
+                        alt='editBook-btn'
+                        width={20}
+                        height={20}
+                      />
+                      <BtnActions
+                        id={guide.id}
+                        method="DELETEBOOK"
+                        src='/icons/admin/trash.svg'
+                        alt='deleteBook-btn'
+                        width={20}
+                        height={20}
+                      />
+                    </div>
                   </TableCell>
                 </TableRow>
               ))}

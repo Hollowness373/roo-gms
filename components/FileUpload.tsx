@@ -7,6 +7,7 @@ import Image from "next/image";
 import { toast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 import ImageKit from "imagekit";
+import GuideCoverSvg from "./GuideCoverSvg";
 
 const {
   env: {
@@ -37,12 +38,14 @@ const authenticator = async () => {
 };
 
 interface Props {
-  type: "image" | "video";
+  type: "image" | "bookimage";
   accept: string;
   value?: string;
   placeholder: string;
   folder: string;
   variant: "dark" | "light";
+  currentPath?: string;
+  currentColor?: string;
   onFileChange: (filePath: string) => void;
 }
 
@@ -54,6 +57,8 @@ const FileUpload = ({
   variant,
   onFileChange,
   value,
+  currentPath,
+  currentColor
 }: Props) => {
   const ikUploadRef = useRef(null);
   const [file, setFile] = useState<{ filePath: string | null }>({
@@ -98,11 +103,11 @@ const FileUpload = ({
 
         return false;
       }
-    } else if (type === "video") {
-      if (file.size > 50 * 1024 * 1024) {
+    } else if (type === "bookimage") {
+      if (file.size > 20 * 1024 * 1024) {
         toast({
           title: "File size too large",
-          description: "Please upload a file that is less than 50MB in size",
+          description: "Please upload a file that is less than 20MB in size",
           variant: "destructive",
         });
         return false;
@@ -157,7 +162,7 @@ const FileUpload = ({
         <p className={cn("text-base", styles.placeholder)}>{placeholder}</p>
 
         {file && (
-          <p className={cn("upload-filename", styles.text)}>{file.filePath}</p>
+          <p className={cn("upload-filename", styles.text)}>{file.filePath ? file.filePath : currentPath}</p>
         )}
       </button>
 
@@ -173,16 +178,23 @@ const FileUpload = ({
         (type === "image" ? (
           <IKImage
             alt={file.filePath || "default-alt-text"}
-            path={file.filePath || undefined}
-            width={500}
+            path={file.filePath ? file.filePath : currentPath || undefined}
+            width={300}
             height={300}
           />
-        ) : type === "video" ? (
-          <IKVideo
-            path={file.filePath || undefined}
-            controls={true}
-            className="h-96 w-full rounded-xl"
-          />
+        ) : type === "bookimage" ? (
+          <div className={'relative transition-all duration-300 guide-cover_medium'}>
+            <GuideCoverSvg coverColor={currentColor || "Default Color"}/>
+            <div className='absolute z-10' style={{ left: '12%', width: '87.5%', height: "88%"}}>
+              <IKImage
+                alt={file.filePath || "default-alt-text"}
+                path={file.filePath ? file.filePath : currentPath || undefined}
+                width={300}
+                height={425}
+                loading="lazy"
+              />
+            </div>
+          </div>
         ) : null)}
     </ImageKitProvider>
   );

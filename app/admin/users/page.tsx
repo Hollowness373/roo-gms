@@ -55,14 +55,24 @@ const Page = async() => {
                                 <TableCell className={`${user.role === "ADMIN" ? "text-primary-admin font-bold": "text-green-600"}`}>{user.role}</TableCell>
                                 <TableCell>{user.createdAt?.toLocaleDateString('en-us', options).replace(/([a-zA-Z]+)\./, '$1.')}</TableCell>
                                 <TableCell>
-                                    <BtnActions
-                                        id={user.id}
-                                        method="DELETE"
-                                        src='/icons/admin/trash.svg'
-                                        alt='ban-btn'
-                                        width={20}
-                                        height={20}
-                                    />
+                                    <div className='flex-row flex justify-end gap-2'>
+                                        <BtnActions
+                                            id={user.id}
+                                            method="EDIT"
+                                            src='/icons/admin/edit.svg'
+                                            alt='edit-btn'
+                                            width={20}
+                                            height={20}
+                                        />
+                                        <BtnActions
+                                            id={user.id}
+                                            method="DELETE"
+                                            src='/icons/admin/trash.svg'
+                                            alt='ban-btn'
+                                            width={20}
+                                            height={20}
+                                        />
+                                    </div>
                                 </TableCell>
                             </TableRow>
                         ))}
