@@ -43,6 +43,13 @@
       "when": 1739894678179,
       "tag": "0005_lush_black_queen",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1740406518852,
+      "tag": "0006_yummy_stryfe",
+      "breakpoints": true
     }
   ]
 }

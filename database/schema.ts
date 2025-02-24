@@ -9,6 +9,8 @@ export const STATUS_ENUM = pgEnum('status', [
 export const ROLE_ENUM =  pgEnum('role', [
     'USER', 
     'ADMIN',
+    'LEADER',
+    'DEVELOPER'
 ]);
 
 export const users = pgTable("users", {
