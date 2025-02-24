@@ -40,10 +40,7 @@ interface EditGuideFormProps {
 
 const EditGuideForm = ({ guideData } : EditGuideFormProps) => {
 
-    const [ pickerColor, setPickerColor ] = useState("");
-    const [ videoPath, setVideoPath ] = useState("");
-    const [ descriptionValue, setDescriptionValue ] = useState("");
-    const [ summary, setSummary ] =  useState("");
+    const [ pickerColor, setPickerColor ] = useState("")
     const router = useRouter();
     const form = useForm<z.infer<typeof guideSchema>>({
         resolver: zodResolver(guideSchema),
@@ -59,12 +56,24 @@ const EditGuideForm = ({ guideData } : EditGuideFormProps) => {
         }
     })
 
+    const { reset, handleSubmit, control } = form;
+
+    // Use effect to update the form when guideData is available
     useEffect(() => {
-        //initialize the values
-        setVideoPath(guideData?.videoUrl as string)
-        setDescriptionValue(guideData?.description as string);
-        setSummary(guideData?.summary as string);
-    }, [guideData?.description])
+        if (guideData) {
+        // Reset the form with the guideData, this ensures that the form is properly populated with the data from guideData.
+        reset({
+            title: guideData.title,
+            author: guideData.author,
+            description: guideData.description,
+            summary: guideData.summary,
+            classCategory: guideData.classCategory,
+            coverUrl: guideData.coverUrl,
+            coverColor: guideData.coverColor,
+            videoUrl: guideData.videoUrl || '',
+        });
+        }
+    }, [guideData, reset]);
       
     //get the values of the fields in the form
     const onSubmit = async(values: z.infer<typeof guideSchema>) => {
@@ -213,11 +222,6 @@ const EditGuideForm = ({ guideData } : EditGuideFormProps) => {
                                 <Input 
                                     placeholder={guideData?.videoUrl ? guideData.videoUrl : "youtube/embed/"}
                                     {...field}
-                                    onChange={(e)=> {
-                                        setVideoPath(e.target.value)
-                                        field.onChange(e)
-                                    }}
-                                    value={videoPath}
                                     className='guide-edit-form_input'
                                 />
                             </FormControl>
@@ -238,11 +242,6 @@ const EditGuideForm = ({ guideData } : EditGuideFormProps) => {
                                     placeholder='Guide Description'
                                     {...field}
                                     rows={10}
-                                    onChange={(e) => {
-                                        setDescriptionValue(e.target.value);
-                                        field.onChange(e);
-                                    }}
-                                    value={descriptionValue}
                                     className='guide-form_input'
                                 />
                             </FormControl>
@@ -263,11 +262,6 @@ const EditGuideForm = ({ guideData } : EditGuideFormProps) => {
                                     placeholder='Guide Summary'
                                     {...field}
                                     rows={10}
-                                    onChange={(e) => {
-                                        setSummary(e.target.value);
-                                        field.onChange(e);
-                                    }}
-                                    value={summary}
                                     className='guide-form_input'
                                 />
                             </FormControl>
