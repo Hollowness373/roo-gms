@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { redirect, useSearchParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
-import { handleFetchGuide } from '@/lib/actions/fetchGuide'
+import { handleFetchGuide } from '@/lib/admin/actions/dbUtils'
 
 
 const Page = () => {

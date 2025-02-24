@@ -55,7 +55,7 @@ const Page = async() => {
                                 <TableCell className={`${user.role === "ADMIN" ? "text-primary-admin font-bold": "text-green-600"}`}>{user.role}</TableCell>
                                 <TableCell>{user.createdAt?.toLocaleDateString('en-us', options).replace(/([a-zA-Z]+)\./, '$1.')}</TableCell>
                                 <TableCell>
-                                    <div className='flex-row flex justify-end gap-2'>
+                                    <div className='cta-btn'>
                                         <BtnActions
                                             id={user.id}
                                             method="EDIT"

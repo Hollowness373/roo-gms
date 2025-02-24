@@ -56,9 +56,9 @@ const Page = async() => {
                                 <TableCell>
                                     <BtnActions
                                         id={user.id}
-                                        method="BAN"
+                                        method="KICK"
                                         src='/icons/admin/ban.svg'
-                                        alt='ban-btn'
+                                        alt='kick-btn'
                                         width={20}
                                         height={20}
                                     />

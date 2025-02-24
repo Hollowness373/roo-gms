@@ -28,3 +28,9 @@ interface GuideParams {
     summary: string;
     videoUrl: string;
 }
+
+interface AdminUpdateUser {
+    inGameName: string;
+    classId: string;
+    password: string;
+}
