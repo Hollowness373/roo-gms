@@ -19,13 +19,19 @@ const layout = async( { children }: { children : ReactNode }) => {
   if(!session?.user?.id) {
     redirect("/")
   }
-
-  //check if user is admin for 2nd layer of security
-  const isAdmin = await db.select({isAdmin: users.role}).from(users).where(eq(users.id, session?.user?.id)).limit(1).then((res) => res[0]?.isAdmin === "ADMIN")
+  
+  //Check if the user has a valid role for admin access for 2nd layer of security
+  const isAdmin = await db
+    .select({isAdmin: users.role})
+    .from(users)
+    .where(eq(users.id, session?.user?.id))
+    .limit(1)
+    .then((res) => res[0]?.isAdmin === "ADMIN" || res[0]?.isAdmin === "DEV" || res[0]?.isAdmin === "LEADER");
+  // Improve query performance by indexing and query profiling
   if(!isAdmin) {
-    redirect("/")
+      redirect("/");
   }
-
+  
   return (
     <main className="flex min-h-screen w-full flex-row">
         <Sidebar session={session} userImage={image as string}/>

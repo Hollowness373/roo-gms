@@ -10,7 +10,7 @@ export const ROLE_ENUM =  pgEnum('role', [
     'USER', 
     'ADMIN',
     'LEADER',
-    'DEVELOPER'
+    'DEV'
 ]);
 
 export const users = pgTable("users", {

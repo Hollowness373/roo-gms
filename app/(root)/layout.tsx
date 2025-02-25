@@ -17,7 +17,7 @@ const layout = async({children} : { children: ReactNode}) => {
   const getUserData = await db.select().from(users).where(eq(users.email, session?.user?.email as string)).limit(1)
 
   const { userImage, role } = getUserData[0];
-  const isAdmin = role === "ADMIN";
+  const isAdmin = role === "ADMIN" || role === "DEV" || role === "LEADER";
 
   return <main className='root-container'>
     <div className='mx-auto max-w-7xl'>
