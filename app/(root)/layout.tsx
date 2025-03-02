@@ -20,7 +20,7 @@ const layout = async({children} : { children: ReactNode}) => {
   const isAdmin = role === "ADMIN" || role === "DEV" || role === "LEADER";
 
   return <main className='root-container'>
-    <div className='mx-auto max-w-7xl'>
+    <div className='w-full mx-auto max-w-7xl'>
         <Header session={session} userProfile={userImage as string} userRole={isAdmin} />
 
         <div className='mt-20 pb-20'>
