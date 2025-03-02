@@ -11,6 +11,19 @@ interface  Guide {
     createdAt: Date | null
 }
 
+interface User {
+    id: string;
+    inGameName: string;
+    email: string;
+    classId: string;
+    userImage: string | null;
+    password: string;
+    status: "APPROVED" | "REJECTED" | null;
+    role: "USER" | "ADMIN" | "LEADER" | "DEV" | null;
+    lastActivityDate: string | null;
+    createdAt: Date | null;
+  }
+
 interface AuthCredentials {
     inGameName: string;
     email: string;

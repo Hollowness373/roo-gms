@@ -33,11 +33,6 @@ export const navigationLinks = [
       route: "/admin/users",
       text: "All Users",
     },
-    {
-      img: "/icons/admin/user.svg",
-      route: "/admin/account-requests",
-      text: "Account Requests",
-    },
   ];
   
   export const FIELD_NAMES = {
