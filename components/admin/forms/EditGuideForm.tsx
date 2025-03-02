@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from 'zod';
@@ -20,14 +20,25 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import FileUpload from '@/components/FileUpload';
 import ColorPicker from '../ColorPicker';
-import { createGuide } from '@/lib/admin/actions/guides';
+import { updateGuide } from '@/lib/admin/actions/guides';
 import { toast } from '@/hooks/use-toast';
 
-interface Props extends Partial<Guide> {
-    type?: 'create' | 'update'
+interface EditGuideFormProps {
+    guideData: {
+        id: string;
+        title: string;
+        author: string;
+        classCategory: string;
+        coverUrl: string;
+        coverColor: string;
+        description: string;
+        summary: string;
+        videoUrl: string | null;
+        createdAt: Date | null;
+    } | null;
 }
 
-const GuideForm = ({ type, ...guide } : Props) => {
+const EditGuideForm = ({ guideData } : EditGuideFormProps) => {
 
     const [ pickerColor, setPickerColor ] = useState("")
     const router = useRouter();
@@ -44,17 +55,36 @@ const GuideForm = ({ type, ...guide } : Props) => {
             videoUrl: '',
         }
     })
+
+    const { reset, handleSubmit, control } = form;
+
+    // Use effect to update the form when guideData is available
+    useEffect(() => {
+        if (guideData) {
+        // Reset the form with the guideData, this ensures that the form is properly populated with the data from guideData.
+        reset({
+            title: guideData.title,
+            author: guideData.author,
+            description: guideData.description,
+            summary: guideData.summary,
+            classCategory: guideData.classCategory,
+            coverUrl: guideData.coverUrl,
+            coverColor: guideData.coverColor,
+            videoUrl: guideData.videoUrl || '',
+        });
+        }
+    }, [guideData, reset]);
       
     //get the values of the fields in the form
     const onSubmit = async(values: z.infer<typeof guideSchema>) => {
-        const result = await createGuide(values);
+        const result = await updateGuide(values, guideData?.id as string);
 
         if (result.success) {
             toast({
-                title: "Guide Created",
-                description: "The guide has been successfully created.",
+                title: "Updated",
+                description: "The guide has been successfully updated.",
             });
-            router.push(`/admin/guides/${result.data.id}`);
+            router.push(`/admin/guides`);
         } else {
             toast({
                 title: "Error",
@@ -78,10 +108,9 @@ const GuideForm = ({ type, ...guide } : Props) => {
                             </FormLabel>
                             <FormControl>
                                 <Input 
-                                    required
-                                    placeholder='Guide Title'
+                                    placeholder={guideData?.title}
                                     {...field}
-                                    className='guide-form_input'
+                                    className='guide-edit-form_input'
                                 />
                             </FormControl>
                         <FormMessage />
@@ -98,10 +127,9 @@ const GuideForm = ({ type, ...guide } : Props) => {
                             </FormLabel>
                             <FormControl>
                                 <Input 
-                                    required
-                                    placeholder='Guide Author'
+                                    placeholder={guideData?.author}
                                     {...field}
-                                    className='guide-form_input'
+                                    className='guide-edit-form_input'
                                 />
                             </FormControl>
                         <FormMessage />
@@ -119,7 +147,7 @@ const GuideForm = ({ type, ...guide } : Props) => {
                             <FormControl>
                                 <Select onValueChange={field.onChange} required {...field}>
                                     <SelectTrigger className="guide-form_input">
-                                        <SelectValue placeholder="Select Class"/>
+                                        <SelectValue defaultValue={guideData?.classCategory} placeholder={guideData?.classCategory}/>
                                     </SelectTrigger>
                                     <SelectContent className='bg-light-600'>
                                         <SelectItem value="General">General</SelectItem>
@@ -152,11 +180,12 @@ const GuideForm = ({ type, ...guide } : Props) => {
                                     folder="guides/cover"
                                     variant="light"
                                     onFileChange={field.onChange}
-                                    value={field.value}
-                                    currentColor={pickerColor}
+                                    value={field.value ? field.value : guideData?.coverUrl}
+                                    currentPath={guideData?.coverUrl}
+                                    currentColor={pickerColor ? pickerColor : guideData?.coverColor}
                                 />
                             </FormControl>
-                        <FormMessage />
+                        <FormMessage/>
                         </FormItem>
                     )}
                 />  
@@ -170,11 +199,30 @@ const GuideForm = ({ type, ...guide } : Props) => {
                             </FormLabel>
                             <FormControl>
                                 <ColorPicker 
-                                    value={field.value}
+                                    value={field.value ? field.value : guideData?.coverColor} 
                                     onPickerChange={(color: string) => {
                                         field.onChange(color);
                                         setPickerColor(color);
                                     }}
+                                />
+                            </FormControl>
+                        <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name={"videoUrl"}
+                    render={({ field }) => (
+                        <FormItem className='flex flex-col gap-1' >
+                            <FormLabel className='text-base font-normal text-dark-500'>
+                                Youtube Video URL (embed)
+                            </FormLabel>
+                            <FormControl>
+                                <Input 
+                                    placeholder={guideData?.videoUrl ? guideData.videoUrl : "youtube/embed/"}
+                                    {...field}
+                                    className='guide-edit-form_input'
                                 />
                             </FormControl>
                         <FormMessage />
@@ -203,25 +251,6 @@ const GuideForm = ({ type, ...guide } : Props) => {
                 />
                 <FormField
                     control={form.control}
-                    name={"videoUrl"}
-                    render={({ field }) => (
-                        <FormItem className='flex flex-col gap-1' >
-                            <FormLabel className='text-base font-normal text-dark-500'>
-                                Youtube Video URL (embed)
-                            </FormLabel>
-                            <FormControl>
-                                <Input 
-                                    placeholder='youtube.com/embed/'
-                                    {...field}
-                                    className='guide-form_input'
-                                />
-                            </FormControl>
-                        <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
                     name={"summary"}
                     render={({ field }) => (
                         <FormItem className='flex flex-col gap-1' >
@@ -241,11 +270,11 @@ const GuideForm = ({ type, ...guide } : Props) => {
                     )}
                 />
                 <Button type="submit" className='guide-form_btn text-white'>
-                    Submit Guide
+                    Update Guide
                 </Button>
             </form>
         </Form>
     )
 }
 
-export default GuideForm
+export default EditGuideForm;

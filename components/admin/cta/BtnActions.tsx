@@ -2,13 +2,14 @@
 
 import React from 'react'
 import Image from 'next/image'
-import { handleBan } from '@/lib/actions/ban';
-import { handleDeleteUser } from '@/lib/actions/deleteUser';
+import { useRouter } from 'next/navigation';
+import { handleKick, handleDeleteUser } from '@/lib/admin/actions/dbUtils';
+
 
 interface Props {
   src: string;
   alt: string;
-  method: "BAN" | "EDIT" | "DELETE";
+  method: "KICK" | "EDIT" | "DELETE" | "DELETEBOOK" | "EDITBOOK";
   width: number;
   height: number;
   id: string;
@@ -16,16 +17,28 @@ interface Props {
 
 const BtnActions: React.FC<Props> = ({ src, alt, width, height, id, method}) => {
 
-  const onBanHandler = (id: string) => {
-    if (method === "BAN") {
-      handleBan({id});
-    } else if (method === "DELETE") {
-      handleDeleteUser({id})
+  const router = useRouter();
+
+  const onBtnHandler = (id: string) => {
+    switch (method) {
+      case "KICK":
+        handleKick({id});
+        break;
+      case "DELETE":
+        handleDeleteUser({id});
+        break;
+      case "EDIT":
+        router.push(`/admin/users/edit?id=${id}`);
+        break;
+      case "EDITBOOK":
+        router.push(`/admin/guides/edit?id=${id}`);
+        break;
+      
     }
   }
 
   return (
-      <button className='flex justify-self-end' type='button' onClick={() => onBanHandler(id)}>
+      <button className='flex justify-self-end' type='button' onClick={() => onBtnHandler(id)}>
         <Image 
           src={src}
           alt={alt} 

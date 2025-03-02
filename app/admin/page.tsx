@@ -1,8 +1,39 @@
-import React from 'react'
+import React from 'react';
+import RecentData from '@/components/admin/RecentData'
+import RecentGuide from '@/components/admin/RecentGuide'
+import TotalOverview from '@/components/admin/TotalOverview'
+import { fetchHomeData } from '@/lib/admin/actions/homedata'
+import { db } from "@/database/drizzle";
+import { guides, users } from "@/database/schema";
+import { desc } from "drizzle-orm";
 
-const Page = () => {
+const Page = async() => {
+
+  const data = await fetchHomeData();
+  const guidesList = (await db.select().from(guides).limit(5).orderBy(desc(guides.createdAt))) as Guide[];
+  const newUsers = await db.select().from(users).limit(6).orderBy(desc(users.createdAt))
+
   return (
-    <div>Admin Dashboard</div>
+    <section className='bg-light-300 w-full'>
+      <div className='flex-row flex gap-5'>
+          <TotalOverview 
+            titleCard='Panda Members'
+            totalNum={data?.totalPanda}
+          />
+          <TotalOverview 
+            titleCard='Total Users'
+            totalNum={data?.totalUsers}
+          />
+          <TotalOverview 
+            titleCard='Total Guides'
+            totalNum={data?.totalGuides}
+          />
+      </div>
+      <div className='mt-5 flex gap-5'>
+          <RecentData newUsers={newUsers}/>
+          <RecentGuide recentGuides={guidesList}/>
+      </div>
+    </section>
   )
 }
 
