@@ -10,7 +10,6 @@ interface Props {
 const GuideList = ({ title, guides, containerClassName }: Props) => {
 
   if(guides.length < 2) return;
-  console.log(guides);
   
   return (
     <section className={containerClassName}>
