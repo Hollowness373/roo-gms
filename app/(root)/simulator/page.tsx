@@ -14,7 +14,7 @@ const Page = () => {
 
   return (
     <div className='flex flex-col items-center w-full rounded-2xl'>
-      <h1 className='text-white text-5xl font-semibold'>Simulate Game Mechanics</h1>
+      <h1 className='text-white text-5xl font-semibold self-center'>Simulate Game Mechanics</h1>
       <ul className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-x-20 gap-y-10 mt-20'>
         {simCardLinks.map((data) => (
           <SimulatorCard 

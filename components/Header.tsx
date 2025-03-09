@@ -75,7 +75,7 @@ const Header = ({ session, userProfile, userRole } : { session: Session, userPro
               </DropdownMenuLabel>
               <DropdownMenuSeparator className='bg-dark-100 h-1'/>
               <DropdownMenuItem onClick={() => {router.push("/my-profile")}} className='focus:bg-accent focus:text-accent-foreground'>Profile</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => {router.push("/my-profile")}} className='focus:bg-accent focus:text-accent-foreground'>Account Settings</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => {router.push(`/account-settings`)}} className='focus:bg-accent focus:text-accent-foreground'>Account Settings</DropdownMenuItem>
               {userRole && 
               <DropdownMenuItem onClick={() => {router.push("/admin")}} className='focus:bg-accent focus:text-accent-foreground'>Admin Panel</DropdownMenuItem>
               }

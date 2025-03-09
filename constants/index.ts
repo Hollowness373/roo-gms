@@ -45,6 +45,69 @@
       cardTitle: "Skill Build Simulator",
       cardDescription: "In Ragnarok Origin Global, if you want to succeed in the game, you must bring your character to the highest level possible. Well, from picking the best spells to the strongest buffs, you will surely break the matrix and become successful in the game."
     },
+  ];
+
+  export const sampleAvatars = [
+    {
+      image: 'https://github.com/shadcn.png',
+      alt: 'shadcn-image',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/poro-rebirth.jpg',
+      alt: 'poro-rebirth',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/poro.png',
+      alt: 'poro',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/poro-headwear.png',
+      alt: 'poro-headwear',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/irene.jpg',
+      alt: 'irene',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/roo-icon.png',
+      alt: 'roo-icon',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/irene-poro.png',
+      alt: 'irene-poro',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/warrior.jpg',
+      alt: 'warrior',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/divine.jpg',
+      alt: 'divine',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/archer.png',
+      alt: 'archer',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/acolyte.png',
+      alt: 'acolyte',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/swordsman.png',
+      alt: 'swordsman',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/merchant.png',
+      alt: 'merchant',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/magician.png',
+      alt: 'magician',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/Thief.png',
+      alt: 'thief',
+    },
   ]
   
   export const adminSideBarLinks = [
