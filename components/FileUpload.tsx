@@ -140,7 +140,8 @@ const FileUpload = ({
         className="hidden"
       />
 
-      <button
+      {type === "bookimage" ? 
+        <button
         className={cn("upload-btn", styles.button)}
         onClick={(e) => {
           e.preventDefault();
@@ -150,7 +151,7 @@ const FileUpload = ({
             ikUploadRef.current?.click();
           }
         }}
-      >
+        >
         <Image
           src="/icons/upload.svg"
           alt="upload-icon"
@@ -164,7 +165,28 @@ const FileUpload = ({
         {file && (
           <p className={cn("upload-filename", styles.text)}>{file.filePath ? file.filePath : currentPath}</p>
         )}
-      </button>
+        </button>
+      :
+        <button
+          
+          onClick={(e) => {
+            e.preventDefault();
+
+            if (ikUploadRef.current) {
+              // @ts-ignore
+              ikUploadRef.current?.click();
+            }
+          }}
+        >
+          <Image
+            src="/icons/img-upload.svg"
+            alt='img-upload'
+            width={30}
+            height={30}
+            className="object-contain"
+          />
+        </button>
+      }
 
       {progress > 0 && progress !== 100 && (
         <div className="w-full rounded-full bg-green-200">
@@ -176,12 +198,9 @@ const FileUpload = ({
 
       {file &&
         (type === "image" ? (
-          <IKImage
-            alt={file.filePath || "default-alt-text"}
-            path={file.filePath ? file.filePath : currentPath || undefined}
-            width={300}
-            height={300}
-          />
+          <div>
+
+          </div>
         ) : type === "bookimage" ? (
           <div className={'relative transition-all duration-300 guide-cover_medium'}>
             <GuideCoverSvg coverColor={currentColor || "Default Color"}/>

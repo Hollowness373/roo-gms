@@ -23,7 +23,6 @@ const page = () => {
 
     useEffect(() => {
         getSession().then(session => {
-            console.log(session)
             if (session) {
                 const { userImage } = session;
                 setUserProfile(userImage);
@@ -36,17 +35,24 @@ const page = () => {
         setSelectedAvatar(res.alt)
     }
 
+    useEffect(() => {
+        if(file) {
+            setUserProfile(`https://ik.imagekit.io/nmxcxnfxh${file}`)
+        }
+    }, [file])
+
     return (
     <div className='w-full bg-dark-300 rounded-3xl flex flex-col items-center p-10'>
         <h1 className='text-white text-5xl font-semibold'>Change Profile Picture</h1>
-        <button className='flex justify-center items-center rounded-full'>
+        <div className='flex justify-center items-center'>
             <div className='absolute z-10 rounded-full bg-dark-300 bg-opacity-55 p-2'>
-                
-                <Image 
-                    src={"/icons/img-upload.svg"}
-                    alt='img-upload'
-                    height={30}
-                    width={30}
+                <FileUpload
+                    type="image"
+                    accept="image/*"
+                    placeholder="Upload a cover image"
+                    folder="ProfileImage"
+                    variant="dark"
+                    onFileChange={setFile}
                 />
             </div>
             {userProfile === "" ? 
@@ -57,8 +63,8 @@ const page = () => {
                 <Avatar className='h-40 w-40'>
                     <AvatarImage src={userProfile as string} alt='user-image' />
                 </Avatar>
-                }
-        </button>
+            }
+        </div>
         <div className='w-full mt-20 p-5 '>
             <ul className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6'>
                 {sampleAvatars.map((data) => (
