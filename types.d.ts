@@ -47,3 +47,7 @@ interface AdminUpdateUser {
     classId: string;
     password: string;
 }
+
+interface UpdateAvatar {
+    userImage: string;
+}
