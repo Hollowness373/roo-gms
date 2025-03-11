@@ -26,6 +26,7 @@ const page = () => {
     const [ selectedAvatar, setSelectedAvatar ] = useState<string>();
     const [ userProfile, setUserProfile ] = useState<string | null>();
     const [ file, setFile ] = useState<any>();
+    const [ isLoading, setIsLoading ] = useState(false)
 
     useEffect(() => {
         getSession().then(session => {
@@ -83,14 +84,21 @@ const page = () => {
         <h1 className='text-white text-5xl font-semibold'>Change Profile Picture</h1>
         <div className='flex justify-center items-center mt-20'>
             <div className='absolute z-10 rounded-full bg-dark-300 bg-opacity-55 p-2'>
-                <FileUpload
-                    type="image"
-                    accept="image/*"
-                    placeholder="Upload a cover image"
-                    folder="ProfileImage"
-                    variant="dark"
-                    onFileChange={setFile}
-                />
+                {isLoading ? (
+                    <div className='z-10'>
+                        <h2 className='text-primary text-xl'>Uploading...</h2>
+                    </div>
+                ) : (
+                    <FileUpload
+                        type="image"
+                        accept="image/*"
+                        placeholder="Upload a cover image"
+                        folder="ProfileImage"
+                        variant="dark"
+                        onFileChange={setFile}
+                        setIsLoading={setIsLoading}
+                    />
+                )}
             </div>
             {userProfile === "" ? 
                 <Avatar className='h-40 w-40'>

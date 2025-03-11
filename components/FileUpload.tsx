@@ -47,6 +47,7 @@ interface Props {
   currentPath?: string;
   currentColor?: string;
   onFileChange: (filePath: string) => void;
+  setIsLoading: (status: boolean) => void;
 }
 
 const FileUpload = ({
@@ -56,6 +57,7 @@ const FileUpload = ({
   folder,
   variant,
   onFileChange,
+  setIsLoading,
   value,
   currentPath,
   currentColor
@@ -90,6 +92,7 @@ const FileUpload = ({
       title: `${type} uploaded successfully`,
       description: `${res.filePath} uploaded successfully!`,
     });
+    setIsLoading(false)
   };
 
   const onValidate = (file: File) => {
@@ -129,10 +132,13 @@ const FileUpload = ({
         onSuccess={onSuccess}
         useUniqueFileName={true}
         validateFile={onValidate}
-        onUploadStart={() => setProgress(0)}
+        onUploadStart={() => {
+          setIsLoading(true)
+          setProgress(0)
+        }}
         onUploadProgress={({ loaded, total }) => {
           const percent = Math.round((loaded / total) * 100);
-
+          console.log(percent);
           setProgress(percent);
         }}
         folder={folder}
