@@ -22,7 +22,7 @@ const Page = () => {
         } | null>(null);
 
         useEffect(() => {
-            handleFetchUser({id}).then((data) => setUserData(data || null));
+            handleFetchUser(id).then((data) => setUserData(data || null));
         }, [])
 
     return (

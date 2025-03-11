@@ -223,6 +223,15 @@
   .select-item {
     @apply focus:bg-dark-600 focus:text-light-100 !important;
   }
+
+  /* Simulator */
+  .simulator-container {
+    @apply flex flex-col items-center mt-20 gap-6 !important;
+  }
+
+  .simulator-form_input {
+    @apply min-h-10 border border-gray-100 text-white p-4 text-base font-semibold placeholder:font-normal placeholder:text-white !important;
+  }
 }
 
 @layer utilities {

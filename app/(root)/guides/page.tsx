@@ -6,6 +6,7 @@ import { initialFetchGuide, queryFetchGuide } from '@/lib/actions/fetchGuide';
 import { useEffect, useState } from 'react';
 import { Input } from '@/components/ui/input';
 import Image from 'next/image';
+import GuideSearchResult from '@/components/GuideSearchResult';
 
 const Page = () => {
   const [guidesList, setGuidesList] = useState<Guide[]>([]);
@@ -71,11 +72,11 @@ const Page = () => {
       {isLoading ? (
         <div className="flex justify-center mt-28 h-screen text-light-100">Fetching...</div>
       ) : (
-        <GuideList 
+        <GuideSearchResult 
           title='Search Results:'
-          guides={guidesList || []}
+          guides={ guidesList || [] }
           containerClassName='mt-28'
-        />
+        /> 
       )}
     </>
   )

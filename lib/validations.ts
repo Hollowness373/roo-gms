@@ -28,3 +28,7 @@ export const adminUserSchema = z.object({
     classId: z.string().min(3),
     password: z.string(),
 });
+
+export const updateAvatar = z.object({
+    userImage: z.string().nonempty()
+})

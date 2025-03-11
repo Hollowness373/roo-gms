@@ -77,7 +77,7 @@ const EditGuideForm = ({ guideData } : EditGuideFormProps) => {
       
     //get the values of the fields in the form
     const onSubmit = async(values: z.infer<typeof guideSchema>) => {
-        const result = await updateGuide(values, guideData?.id as string);
+        const result = await updateGuide(values, guideData?.id as string, guideData?.title as string);
 
         if (result.success) {
             toast({

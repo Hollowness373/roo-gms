@@ -61,7 +61,8 @@ const Page = async() => {
                     <div className='flex flex-row justify-end gap-2'>
                       <BtnActions
                         id={guide.id}
-                        method="EDITBOOK"
+                        target={guide.title}
+                        method="EDITGUIDE"
                         src='/icons/admin/edit.svg'
                         alt='editBook-btn'
                         width={20}
@@ -69,7 +70,8 @@ const Page = async() => {
                       />
                       <BtnActions
                         id={guide.id}
-                        method="DELETEBOOK"
+                        target={guide.title}
+                        method="DELETEGUIDE"
                         src='/icons/admin/trash.svg'
                         alt='deleteBook-btn'
                         width={20}

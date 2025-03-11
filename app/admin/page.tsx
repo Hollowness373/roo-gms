@@ -4,13 +4,14 @@ import RecentGuide from '@/components/admin/RecentGuide'
 import TotalOverview from '@/components/admin/TotalOverview'
 import { fetchHomeData } from '@/lib/admin/actions/homedata'
 import { db } from "@/database/drizzle";
-import { guides, users } from "@/database/schema";
+import { guides, users, logs } from "@/database/schema";
 import { desc } from "drizzle-orm";
 
 const Page = async() => {
 
   const data = await fetchHomeData();
   const guidesList = (await db.select().from(guides).limit(5).orderBy(desc(guides.createdAt))) as Guide[];
+  const recentLogs = await db.select().from(logs).limit(5).orderBy(desc(logs.createdAt))
   const newUsers = await db.select().from(users).limit(6).orderBy(desc(users.createdAt))
 
   return (
@@ -30,7 +31,7 @@ const Page = async() => {
           />
       </div>
       <div className='mt-5 flex gap-5'>
-          <RecentData newUsers={newUsers}/>
+          <RecentData newUsers={newUsers} recentLogs={recentLogs} />
           <RecentGuide recentGuides={guidesList}/>
       </div>
     </section>

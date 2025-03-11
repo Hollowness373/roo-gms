@@ -4,12 +4,14 @@ import React from 'react'
 import { Button } from '../ui/button'
 import { useRouter } from 'next/navigation'
 import RecentUserCard from './RecentUserCard';
+import RecentLogs from './RecentLogs';
 
 interface Props {
   newUsers: User[];
+  recentLogs: Logs[];
 }
 
-const RecentData = ({newUsers}: Props) => {
+const RecentData = ({newUsers, recentLogs}: Props) => {
 
   const router = useRouter();
   
@@ -35,6 +37,11 @@ const RecentData = ({newUsers}: Props) => {
             <h2 className='text-primary-admin font-bold'>View All</h2>
           </Button>
         </div>
+        <ul className='mt-6'>
+          {recentLogs.map((data) => (
+            <RecentLogs key={data.id} {...data}/>
+          ))}
+        </ul>
       </div>
     </div>
   )

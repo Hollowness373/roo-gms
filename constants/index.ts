@@ -1,4 +1,4 @@
-export const navigationLinks = [
+  export const navigationLinks = [
     {
       href: "/library",
       label: "Library",
@@ -11,6 +11,104 @@ export const navigationLinks = [
       label: "My Profile",
     },
   ];
+
+  export const simCardLinks = [
+    {
+      id: 1,
+      img: "/images/refineCover.jpg",
+      route: "/refine-simulator",
+      routeStatus: true,
+      cardTitle: "Refine Simulator",
+      cardDescription: "Simulate item, and equipment refining. Equipments in Ragnarok Origin can be 'upgraded' or 'refined'. This system will allow you to increase the refinement of each piece of equipment and gives more attack, defense, and HP attributes."
+    },
+    {
+      id: 2,
+      img: "/images/cardGachaCover.png",
+      route: "/card-simulator",
+      routeStatus: false,
+      cardTitle: "Card Vending Simulator",
+      cardDescription: "Simulate card drops, the cards you can obtain here vary depending on whether you're pulling on the Common or Advanced card gachas. This simulator is coming soon, and it's currently unavailable. We are working hard to make it available as soon as possible for you to enjoy."
+    },
+    {
+      id: 3,
+      img: "/images/petGachaCover.png",
+      route: "/pet-simulator",
+      routeStatus: false,
+      cardTitle: "Pet Vending Simulator",
+      cardDescription: "The Pet System is a crucial component that aids and supports our characters in various combat scenarios, including farming, dungeon runs, and PvP battles. Pet System occurs when a character reaches Base Level 22. This simulator is coming soon, and it's currently unavailable."
+    },
+    {
+      id: 4,
+      img: "/images/skillBuild.png",
+      route: "/skillbuild-simulator",
+      routeStatus: false,
+      cardTitle: "Skill Build Simulator",
+      cardDescription: "In Ragnarok Origin Global, if you want to succeed in the game, you must bring your character to the highest level possible. Well, from picking the best spells to the strongest buffs, you will surely break the matrix and become successful in the game."
+    },
+  ];
+
+  export const sampleAvatars = [
+    {
+      image: 'https://github.com/shadcn.png',
+      alt: 'shadcn-image',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/poro-rebirth.jpg',
+      alt: 'poro-rebirth',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/poro.png',
+      alt: 'poro',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/poro-headwear.png',
+      alt: 'poro-headwear',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/irene.jpg',
+      alt: 'irene',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/roo-icon.png',
+      alt: 'roo-icon',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/irene-poro.png',
+      alt: 'irene-poro',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/warrior.jpg',
+      alt: 'warrior',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/divine.jpg',
+      alt: 'divine',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/archer.png',
+      alt: 'archer',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/acolyte.png',
+      alt: 'acolyte',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/swordsman.png',
+      alt: 'swordsman',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/merchant.png',
+      alt: 'merchant',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/magician.png',
+      alt: 'magician',
+    },
+    {
+      image: 'https://ik.imagekit.io/nmxcxnfxh/sample-avatar/Thief.png',
+      alt: 'thief',
+    },
+  ]
   
   export const adminSideBarLinks = [
     {

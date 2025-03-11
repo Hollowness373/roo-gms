@@ -76,6 +76,7 @@ const Page = async() => {
                                     <div className='cta-btn'>
                                         <BtnActions
                                             id={user.id}
+                                            target={user.inGameName}
                                             method="EDIT"
                                             src='/icons/admin/edit.svg'
                                             alt='edit-btn'
@@ -84,6 +85,7 @@ const Page = async() => {
                                         />
                                         <BtnActions
                                             id={user.id}
+                                            target={user.inGameName}
                                             method="DELETE"
                                             src='/icons/admin/trash.svg'
                                             alt='ban-btn'
