@@ -22,7 +22,15 @@ interface User {
     role: "USER" | "ADMIN" | "LEADER" | "DEV" | null;
     lastActivityDate: string | null;
     createdAt: Date | null;
-  }
+}
+
+interface Logs {
+    id: string;
+    target: string;
+    initiator: string;
+    action: string;
+    createdAt: Date | null;
+}
 
 interface AuthCredentials {
     inGameName: string;

@@ -30,7 +30,7 @@ const Page = () => {
     } | null>(null);
 
     useEffect(() => {
-        handleFetchGuide({id}).then((data) => setGuideData(data || null));
+        handleFetchGuide(id).then((data) => setGuideData(data || null));
     }, [])
     
   return (

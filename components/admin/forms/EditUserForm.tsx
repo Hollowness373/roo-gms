@@ -64,7 +64,7 @@ const EditUserForm = ({ userData }: EditUserFormProps) => {
             });
             return
         }
-        const result = await adminUpdateUser(values, userData?.id as string);
+        const result = await adminUpdateUser(values, userData?.id as string, userData?.inGameName as string);
 
         if (result.success) {
             toast({

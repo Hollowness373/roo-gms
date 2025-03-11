@@ -38,3 +38,11 @@ export const guides = pgTable("guides", {
   videoUrl: text("video_url"),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
 });
+
+export const logs = pgTable("logs", {
+  id: uuid("id").notNull().primaryKey().defaultRandom().unique(),
+  target: varchar("target", { length: 255 }).notNull(),
+  initiator: varchar("initiator", { length: 255 }).notNull(),
+  action: text("action").notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+});

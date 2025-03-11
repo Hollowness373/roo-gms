@@ -94,6 +94,7 @@ const Page = async() => {
                                 <TableCell>
                                     <BtnActions
                                         id={user.id}
+                                        target={user.inGameName}
                                         method="KICK"
                                         src='/icons/admin/ban.svg'
                                         alt='kick-btn'

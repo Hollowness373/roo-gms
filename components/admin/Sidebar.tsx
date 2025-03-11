@@ -1,19 +1,24 @@
 "use client"
 
-import React, { useEffect, useState} from 'react'
-import { adminSideBarLinks } from '@/constants'
-import { cn } from '@/lib/utils'
-import Image from 'next/image'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { Avatar, AvatarImage } from '../ui/avatar'
-import { Session } from 'next-auth'
+import React from 'react';
+import { adminSideBarLinks } from '@/constants';
+import { cn } from '@/lib/utils';
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { Avatar, AvatarImage } from '../ui/avatar';
+import { Session } from 'next-auth';
+import { signOutFromServer } from "@/lib/actions/logout"
 
 const Sidebar = ({ session, userImage }: { session: Session, userImage: String }) => {
 
     const pathName = usePathname();
 
-  return (
+    const handleLogOut = async() => {
+        await signOutFromServer();
+    }
+
+    return (
     <div className='admin-sidebar'>
         <div>
             <Link href={"/"} className="logo">
@@ -51,6 +56,14 @@ const Sidebar = ({ session, userImage }: { session: Session, userImage: String }
                 <p className='font-semibold text-dark-200'>{session?.user?.name}</p>
                 <p className='text-light-500 text-xs'>{session?.user?.email}</p>
             </div>
+            <button onClick={handleLogOut}>
+                <Image 
+                    src="/icons/logout.svg"
+                    alt='logout-btn'
+                    width={20}
+                    height={20}
+                />
+            </button>
         </div>
     </div>
   )
