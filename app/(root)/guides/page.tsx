@@ -70,7 +70,11 @@ const Page = () => {
         </div>
       </div>
       {isLoading ? (
-        <div className="flex justify-center mt-28 h-screen text-light-100">Fetching...</div>
+        <div className="mt-28 h-screen flex justify-center">
+          <div >
+            <img src='/images/fetching.gif' alt='fetching-view' height={150} width={150}/>
+            </div>
+        </div>
       ) : (
         <GuideSearchResult 
           title='Search Results:'

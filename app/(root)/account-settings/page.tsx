@@ -83,12 +83,12 @@ const page = () => {
     <div className='w-full rounded-3xl flex flex-col items-center p-10'>
         <h1 className='text-white text-5xl font-semibold'>Change Profile Picture</h1>
         <div className='flex justify-center items-center mt-20'>
-            <div className='absolute z-10 rounded-full bg-dark-300 bg-opacity-55 p-2'>
-                {isLoading ? (
-                    <div className='z-10'>
-                        <h2 className='text-primary text-xl'>Uploading...</h2>
-                    </div>
-                ) : (
+            {isLoading ? (
+                <div className='z-10 absolute justify-center rounded-full bg-dark-300 bg-opacity-55'>
+                    <img src='/images/loading.gif' alt='loading-view' height={60} width={60}/>
+                </div>
+            ) : (
+                <div className='absolute z-10 rounded-full bg-dark-300 bg-opacity-55 p-1'>
                     <FileUpload
                         type="image"
                         accept="image/*"
@@ -97,9 +97,9 @@ const page = () => {
                         variant="dark"
                         onFileChange={setFile}
                         setIsLoading={setIsLoading}
-                    />
-                )}
-            </div>
+                    />   
+                </div>
+            )}
             {userProfile === "" ? 
                 <Avatar className='h-40 w-40'>
                     <AvatarImage src={'https://github.com/shadcn.png'}  />
