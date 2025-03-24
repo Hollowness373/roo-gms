@@ -27,7 +27,7 @@ const RecentGuide = ({recentGuides}: Props) => {
     return (
         <div className='w-full bg-white p-5 rounded-2xl'>
             <div className='flex flex-row justify-between items-center'>
-                <h2 className='text-dark-400 font-semibold text-xl'>Recently Added Guide</h2>
+                <h2 className='text-dark-400 font-semibold text-xl'>Recently Added Guides</h2>
                 <Button onClick={() => handleRoute("guides")} className='bg-light-300 hover:bg-light-300'>
                     <h2 className='text-primary-admin font-bold'>View All</h2>
                 </Button>
