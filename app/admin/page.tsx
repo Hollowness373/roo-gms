@@ -18,7 +18,7 @@ const Page = async() => {
     <section className='bg-light-300 w-full'>
       <div className='flex-row flex gap-5'>
           <TotalOverview 
-            titleCard='Panda Members'
+            titleCard='ROGMS Members'
             totalNum={data?.totalPanda}
           />
           <TotalOverview 

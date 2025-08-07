@@ -119,7 +119,7 @@
     {
       img: "/icons/admin/users.svg",
       route: "/admin/panda-users",
-      text: "Panda Members",
+      text: "ROGMS Members",
     },
     {
       img: "/icons/admin/book.svg",

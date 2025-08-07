@@ -22,8 +22,8 @@ const Sidebar = ({ session, userImage }: { session: Session, userImage: String }
     <div className='admin-sidebar'>
         <div>
             <Link href={"/"} className="logo">
-                <Image src="/icons/admin/logo.svg" alt='logo' height={50} width={60}/>
-                <h1>Panda</h1>
+                <Image src="/icons/admin/tempLogo.svg" alt='guild-logo' height={50} width={60}/>
+                <h1>ROGMS</h1>
             </Link>
             <div className="mt-10 flex flex-col gap-5">
                 {adminSideBarLinks.map((link) => {

@@ -24,8 +24,8 @@ const bebasNeue = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "ROO Panda",
-  description: "ROO Panda is a guild management system",
+  title: "ROGMS",
+  description: "ROGMS is a guild management system website designed to help guilds manage their members, events, and resources effectively.",
 };
 
 const RootLayout = async({ children }: { children: ReactNode }) => {

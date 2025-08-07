@@ -48,10 +48,10 @@ const Page = async() => {
 
      return (
         <section className='w-full rounded-2xl bg-white p-7'>
-            <h2 className="text-xl font-semibold">Panda Members</h2>
+            <h2 className="text-xl font-semibold">ROGMS Members</h2>
             <div className='mt-7 w-full overflow-hidden'>
                 <Table className='rounded-t-xl overflow-hidden'>
-                    <TableCaption>List of all Panda members</TableCaption>
+                    <TableCaption>List of all ROGMS members</TableCaption>
                     <TableHeader className='bg-primary-admin'>
                         <TableRow>
                             <TableHead>IGN</TableHead>

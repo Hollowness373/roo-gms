@@ -63,7 +63,7 @@ const AuthForm = <T extends FieldValues>({ type, schema, defaultValues, onSubmit
       return (
         <div className='flex flex-col gap-4'>
             <h1 className="text-2xl font-semibold text-white">
-                {isSignIn ? "Welcome back to Panda's website" : 'Create your account'}
+                {isSignIn ? "Welcome back to ROGMS website" : 'Create your account'}
             </h1>
             <p className="text-light-100">
                 {isSignIn ? 'Access the guides, simulations, and stay updated with the guilds update and events.' : 'Please provide and complete all necessary fields to gain access.'}
@@ -115,7 +115,7 @@ const AuthForm = <T extends FieldValues>({ type, schema, defaultValues, onSubmit
                 </form>
             </Form>
             <p className="text-center text-base font-medium">
-                {isSignIn ? 'New to Panda? ' : 'Already have an account? '}
+                {isSignIn ? 'New to ROGMS? ' : 'Already have an account? '}
                 <Link href={isSignIn ? '/sign-up' : '/sign-in'} className='font-bold text-primary'>
                     {isSignIn ? 'Create an account' : 'Sign in'}
                 </Link>
